@@ -1,0 +1,106 @@
+/*  BlackSmith Bot logger Theme
+    Uses KDE 4.3 background image
+    And has name KDE 4.3
+    This theme was started my oMid, 
+    former simpleApps member
+    and finished by simpleApps codingTeam */
+
+td, body {color: #001A8E; font:11pt none sans-serif; background: url('./img/ChatLog.jpg') no-repeat center center fixed;
+background-size: cover;
+cursor:url('./img/left_ptr.png'), auto}
+a:link {text-decoration:underline; color:#2F9FFF; cursor:url("./img/pointing_hand.png"), pointer}
+a:active {text-decoration:underline; color:#2F9FFF ; cursor:url('./img/pointing_hand.png'), pointer}
+a:visited {text-decoration:underline; color:#2F9FFF; cursor:url('./img/pointing_hand.png'), pointer}
+a.nav {color: black; font-family: monospace; font-size: 20px; font-weight:bold; letter-spacing: 3px; text-decoration: none;}
+a.mover {background: #900; padding: 6px 12px; color: white; font-weight: bold; text-decoration: none; position: fixed !important;}
+.shadowed {font-family:sans-serif; font-size:13pt; color:#67E300; text-shadow: #000 2px 2px 10px;}
+.topic {color: #37EB73; font-weight: bold;}
+.status {color: #7187d1}
+.leave {color: #77068A}
+.nick {color: #006E6E}
+.role {color: #ffec00}
+.join {color: #7187d1}
+.kick {color: #00ffff}
+.ban {color: #ff0000}
+.text {color: #4BD7FF}
+.nick1 {color: #D22A21}
+.nick2 {color: #D23818}
+.nick3 {color: #B84CD2}
+.nick4 {color: #A904D2}
+.nick5 {color: #804A18}
+.nick6 {color: #477C94}
+.nick7 {color: #006cd2}
+.nick8 {color: #2cd28c}
+.nick9 {color: #3344d4}
+.nick10 {color: #2484D2}
+.nick11 {color: #7187d1}
+.nick12 {color: #3AD220}
+.nick13 {color: #00D246}
+.nick14 {color: #70CE04}
+.nick15 {color: #6AD204}
+.nick16 {color: #16B903}
+.nick17 {color: #05d219}
+.nick18 {color: #D2D234}
+.nick19 {color: #989719}
+.nick20 {color: #c89614}
+
+#back-top {display: block;
+display: none;
+z-index: 999; 
+opacity: .8;
+position: fixed; 
+top: 100%; 
+margin-top: -70px; 
+right: 0%; 
+margin-right:10px;
+width: 77px;
+line-height: 20px;
+height: 20px;
+padding: 5px;
+background-color: #080626;
+font-size: 11px;
+text-align: center}
+
+#back-top a {color: #fff}
+
+hr.style-seven {height: 15px;
+border-style: solid;
+border-color: black;
+border-width: 1px 0 0 0; border-radius: 10px;
+}
+hr.style-seven:before {display: block;
+content: "";
+height: 15px;
+margin-top: -16px;
+border-style: solid;
+border-color: black;
+border-width: 0 0 1px 0; border-radius: 20px}
+#note {position: absolute;
+z-index: 6001;
+top: 0;
+left: 0;
+right: 0;
+background: #fde073;
+text-align: center;
+line-height: 2.5;
+overflow: hidden; 
+box-shadow: 0 0 5px black}
+
+.cssanimations.csstransforms #note {
+    -webkit-transform: translateY(-50px);
+    -webkit-animation: slideDown 2.5s 1.0s 1 ease forwards;
+    -moz-transform:    translateY(-50px);
+    -moz-animation:    slideDown 2.5s 1.0s 1 ease forwards}
+
+@-webkit-keyframes slideDown {
+    0%, 100% { -webkit-transform: translateY(-50px); }
+    10%, 90% { -webkit-transform: translateY(0px); }
+}
+
+@-moz-keyframes slideDown {
+    0%, 100% { -moz-transform: translateY(-50px); }
+    10%, 90% { -moz-transform: translateY(0px); }
+}
+
+.next-tab {bottom: 0; right: 0; border-radius: 10px 0px 0px 0px}
+.prev-tab {bottom: 0; left: 0; border-radius: 0px 10px 0px 0px}

@@ -1,0 +1,11 @@
+{
+u"handler_absurd": {
+u"syntax": u'''абсурд <слово>''',
+
+u"cmd": u'''абсурд''',
+
+u"examples": [u'''абсурд пиво'''],
+
+u"desc": u'''Поиск статьи в http://absurdopedia.wikia.com'''
+}
+}

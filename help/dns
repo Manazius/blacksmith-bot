@@ -1,0 +1,21 @@
+{
+u"command_dns": {
+u"syntax": u'''днс [хост/IP]''',
+
+u"cmd": u'''днс''',
+
+u"examples": [u'''днс simpleapps.ru''', u'''днс 127.0.0.1'''],
+
+u"desc": u'''Показывает ответ от DNS для определённого хоста или IP адреса.'''
+},
+
+u"command_chkServer": {
+u"syntax": u'''порт [хост/IP]''',
+
+u"cmd": u'''порт''',
+
+u"examples": [u'''порт simpleapps.ru:80''', u'''порт simpleapps.ru 80'''],
+
+u"desc": u'''Покажет открыт ли порт на указанном сервере.'''
+}
+}

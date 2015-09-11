@@ -1,0 +1,21 @@
+{
+u"handler_most_create": {
+u"syntax": u'''мост [конференция]''',
+
+u"cmd": u'''мост''',
+
+u"examples": [u'''мост test@conference.jabber.ru'''],
+
+u"desc": u'''Создать мост между конференциями'''
+},
+
+u"handler_most_delete": {
+u"syntax": u'''мост_делл''',
+
+u"cmd": u'''мост_дел''',
+
+u"examples": [u'''мост_делл'''],
+
+u"desc": u'''Разорвать мост между конференциями'''
+}
+}

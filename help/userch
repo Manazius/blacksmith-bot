@@ -1,0 +1,11 @@
+{
+u"handler_usearch": {
+u"syntax": u'''ищи [ключ]''',
+
+u"cmd": u'''ищи''',
+
+u"examples": [u'''ищи ]{vich''', u'''ищи lj@xmpp.ru'''],
+
+u"desc": u'''Поиск пользователя по указанному ключу в нике и Jabber ID'''
+}
+}

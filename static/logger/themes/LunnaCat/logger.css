@@ -1,0 +1,47 @@
+/* BlackSmith Bot logger Theme
+ 	Based on Psi+ theme "LunnaCat" by majik
+ 	Theme uses cursors from KDE Oxygen theme, that distributed under GPL license
+	Port (c) simpleApps, 2010 - 2012 */
+
+td, body {color: #4BD7FF; font:11pt none sans-serif; background: url("./ChatLog.png") no-repeat right bottom fixed;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+background-color: #001415; 
+cursor:url('./left_ptr.png'), auto}
+
+a:link {text-decoration:underline; color:#2F9FFF; cursor:url("./pointing_hand.png"), pointer}
+a:active {text-decoration:underline; color:#2F9FFF ; cursor:url('./pointing_hand.png'), pointer}
+a:visited {text-decoration:underline; color:#2F9FFF; cursor:url('./pointing_hand.png'), pointer}
+
+.shadowed {font-family:sans-serif; font-size:13pt; color:#2396ed; text-shadow: #000000 1px 0px 3px}
+.topic {color: #37EB73; font-weight: bold;}
+.nick {color: #006E6E}
+.role {color: #006E6E}
+.text {color: #4BD7FF} 					
+.leave {color: #006E6E}
+.join {color: #006E6E}
+.status {color: #006E6E}
+.kick {color: #006E6E}
+.ban {color: #006E6E}
+.nick1 {color: #D22A21}
+.nick2 {color: #D23818}
+.nick3 {color: #B84CD2}
+.nick4 {color: #A904D2}
+.nick5 {color: #804A18}
+.nick6 {color: #477C94}
+.nick7 {color: #0050D2}
+.nick8 {color: #2C5AD2}
+.nick9 {color: #0070D2}
+.nick10 {color: #2484D2}
+.nick11 {color: #05aa96}
+.nick12 {color: #3AD220}
+.nick13 {color: #00D246}
+.nick14 {color: #70CE04}
+.nick15 {color: #6AD204}
+.nick16 {color: #16B903}
+.nick17 {color: #05d219}
+.nick18 {color: #D2D234}
+.nick19 {color: #989719}
+.nick20 {color: #c89614}

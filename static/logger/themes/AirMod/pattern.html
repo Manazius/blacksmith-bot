@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+<title>%(date)s &#8212; %(chat)s</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../../.theme/logger.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="../../.theme/js/popup.js"></script>
+<script>
+$(document).ready(function(){
+
+	// hide #back-top first
+	$("#back-top").hide();
+	
+	// fade in #back-top
+	$(function () {
+		$(window).scroll(function () {
+			if ($(this).scrollTop() > 100) {
+				$('#back-top').fadeIn();
+			} else {
+				$('#back-top').fadeOut();
+			}
+		});
+
+		// scroll body to 0px on click
+		$('#back-top a').click(function () {
+			$('body,html').animate({
+				scrollTop: 0
+			}, 800);
+			return false;
+		});
+	});
+
+});
+</script>
+</head>
+<body>
+<div id="note">Powered By simpleApps Coding Team | All Right Reserved. Maybe</div>
+<div class="shadowed"><a style="color: #67E300; font-weight: bold" href="http://simpleapps.ru/">BlackSmith Bot Log File</a></div>
+<div id="page-wrap">
+<div class="shadowed" style="text-align: center"><a style="color: #67E300; font-weight: bold; margin-top: 50px" href="xmpp:%(chat)s?join" title="Join to %(chat)s">%(chat)s</a></div></div>
+<hr class="style-seven">
+<div class="shadowed"><h3>%(date)s</h3></div>
+<hr class="style-seven">
+	<p id="back-top">
+		<a href="#top"><span></span>Back to Top</a>
+	</p>
+
+<div><a href='../../%(prev)s.html' class='prev-tab mover' rel='" + prev + "'>&#8592; Сюда</a></div>
+<div><a href='../../%(next)s.html' class='next-tab mover' rel='" + next + "'>Туда &#8594;</a></div>

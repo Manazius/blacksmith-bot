@@ -1,0 +1,41 @@
+{
+u"pyCalc": {
+u"syntax": u'''калк [выражение]''',
+
+u"cmd": u'''калк''',
+
+u"examples": [u'''калк 1+2'''],
+
+u"desc": u'''Калькулятор.'''
+},
+
+u"pyShell": {
+u"syntax": u'''sh [команда]''',
+
+u"cmd": u'''sh''',
+
+u"examples": [u'''sh ls'''],
+
+u"desc": u'''Выполняет шелл команду.'''
+},
+
+u"pyExec": {
+u"syntax": u'''exec [выражение]''',
+
+u"cmd": u'''exec''',
+
+u"examples": [u'''exec x = str(1)'''],
+
+u"desc": u'''Выполняет выражение питона.'''
+},
+
+u"pyEval": {
+u"syntax": u'''eval [выражение]''',
+
+u"cmd": u'''eval''',
+
+u"examples": [u'''eval 1+1'''],
+
+u"desc": u'''Расчитывает и показывает заданное выражение питона.'''
+}
+}

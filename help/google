@@ -1,0 +1,11 @@
+{
+u"command_google": {
+u"syntax": u'''гугл (текст)''',
+
+u"cmd": u'''гугл''',
+
+u"examples": [u'''гугл Doctor Who — поиск «Doctor Who» в Google''', u'''гугл * — покажет дополнительные результаты'''],
+
+u"desc": u'''Делает запрос на поиск в Google.'''
+}
+}

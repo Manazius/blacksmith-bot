@@ -1,0 +1,12 @@
+   =========================================================================
+   ==  NOTICE file for use with the Apache License, Version 2.0,          ==
+   ==  in this case for the BlackSmith Bot distribution.                  ==
+   =========================================================================
+
+   BlackSmith universal jabber bot.
+   Copyright 2010-2011 The simpleApps CodingTeam
+
+   This product includes software developed at
+   The simpleApps CodingTeam (http://simpleapps.ru/).
+
+

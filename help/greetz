@@ -1,0 +1,11 @@
+{
+u"handler_greet": {
+u"syntax": u'''превед [ник/жид] [=] [нет/none/show/*/приветствие]''',
+
+u"cmd": u'''превед''',
+
+u"examples": [u'''превед guy = something''', u'''превед guy@jabber.aq = anything''', u'''превед guy = none — удалит приветствие.'''],
+
+u"desc": u'''Добавляет приветствие для определённого ника или Jabber ID'''
+}
+}

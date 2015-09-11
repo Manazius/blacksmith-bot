@@ -1,0 +1,12 @@
+{
+u"download_handler": {
+u"syntax": u'''скачать [ссыль] [имя_файла]''',
+
+u"cmd": u'''скачать''',
+
+u"examples": [u'''скачать http://musicfond.com/download/billy_jean.mp3''', u'''скачать http://musicfond.com/download/billy_jean.mp3 Billy_Jean.mp3'''],
+
+u"desc": u'''Скачивает указанный файл.
+Вторым параметром можно указать имя файла при сохранении.'''
+}
+}
