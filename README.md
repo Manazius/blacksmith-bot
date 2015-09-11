@@ -42,7 +42,9 @@ BlackSmith - это многофункциональный бот для jabber-
 
 
 1)  Переименуйте "_source.py" в "source.py" в папке "static". Отредактируйте source.py.
+
 2)  Запустите BlackSmith.py или launcher.py.
+
 3)  Из ростера с Jabber ID администратора командуйте "джойн chat[at]conference.tld"
 
 Обратиться по поводу бота можно в simpleapps@conference.jabber.ru.
