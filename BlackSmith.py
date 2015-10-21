@@ -1075,7 +1075,7 @@ def starting_actions():
 	load_plugins()
 
 def Connect():
-	globals()['jClient'] = globals()['JCON'] = xmpp.Client(HOST, PORT)
+	globals()['jClient'] = globals()['JCON'] = xmpp.Client(HOST, PORT, debug=[])
 	Print('\n\nConnecting...', color4)
 	if SECURE:
 		CONNECT = jClient.connect((SERVER, PORT), None, None, False)
