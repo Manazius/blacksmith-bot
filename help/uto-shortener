@@ -1,0 +1,12 @@
+{
+u"url_shortener": {
+u"syntax": u'''урл <адрес>''',
+
+u"cmd": u'''урл''',
+
+u"examples": [u'''урл http://simpleapps.ru''', u'''урл ru.wikipedia.org'''],
+
+u"desc": u'''Сокращает URL средствами сервиса u.to
+© simpleApps'''
+}
+}

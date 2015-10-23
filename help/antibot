@@ -1,0 +1,11 @@
+{
+u"handler_antibot_exceptions": {
+u"syntax": u'''исключения [+/-] [jid]''',
+
+u"cmd": u'''исключения''',
+
+u"examples": [u'''исключения + simpleapps@conference.jabber.ru'''],
+
+u"desc": u'''Добавляет конференцию в исключения функции "антибот"'''
+}
+}

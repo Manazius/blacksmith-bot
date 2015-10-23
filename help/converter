@@ -1,0 +1,11 @@
+{
+u"command_convert": {
+u"syntax": u'''convert (category) ([numer] [unit] [unit])''',
+
+u"cmd": u'''convert''',
+
+u"examples": [u'''convert''', u'''convert temperature''', u'''convert temperature 3 c f'''],
+
+u"desc": u'''Converter.'''
+}
+}

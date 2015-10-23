@@ -1,0 +1,91 @@
+{
+u"handler_quiz_hint": {
+u"syntax": u'''помоги''',
+
+u"cmd": u'''помоги''',
+
+u"examples": [u'''помоги'''],
+
+u"desc": u'''Показать подсказку.'''
+},
+
+u"handler_quiz_base_del": {
+u"syntax": u'''избазы [жид]''',
+
+u"cmd": u'''избазы''',
+
+u"examples": [u'''избазы foo@kabber.ru''', u'''избазы'''],
+
+u"desc": u'''Удаляет всю БД или определённую запись'''
+},
+
+u"handler_quiz_help": {
+u"syntax": u'''викторина''',
+
+u"cmd": u'''викторина''',
+
+u"examples": [u'''викторина'''],
+
+u"desc": u'''Вывод хелпа.'''
+},
+
+u"handler_quiz_scores": {
+u"syntax": u'''счет''',
+
+u"cmd": u'''счет''',
+
+u"examples": [u'''счет'''],
+
+u"desc": u'''Показывает статистику (выводит ник, очки за последнюю игру, общие очки).'''
+},
+
+u"handler_quiz_answer": {
+u"syntax": u'''ответ''',
+
+u"cmd": u'''ответ''',
+
+u"examples": [u'''ответ'''],
+
+u"desc": u'''Показывает правильный ответ <CHEAT>.'''
+},
+
+u"handler_quiz_start": {
+u"syntax": u'''игра''',
+
+u"cmd": u'''игра''',
+
+u"examples": [u'''игра'''],
+
+u"desc": u'''Запуск игры.'''
+},
+
+u"handler_quiz_next": {
+u"syntax": u'''дальше''',
+
+u"cmd": u'''дальше''',
+
+u"examples": [u'''дальше'''],
+
+u"desc": u'''Следущий вопрос.'''
+},
+
+u"handler_quiz_resend": {
+u"syntax": u'''повтори''',
+
+u"cmd": u'''повтори''',
+
+u"examples": [u'''повтори'''],
+
+u"desc": u'''Повтор текущего вопроса.'''
+},
+
+u"handler_quiz_stop": {
+u"syntax": u'''стой''',
+
+u"cmd": u'''стой''',
+
+u"examples": [u'''стой'''],
+
+u"desc": u'''Остановка игры.'''
+}
+}

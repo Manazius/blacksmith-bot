@@ -1,0 +1,11 @@
+{
+u"isGd_shortener": {
+u"syntax": u'''сократи <адрес>''',
+
+u"cmd": u'''сократи''',
+
+u"examples": [u'''сократи http://simpleapps.ru''', u'''сократи ru.wikipedia.org'''],
+
+u"desc": u'''Сокращает URL средствами сервиса http://is.gd/'''
+}
+}

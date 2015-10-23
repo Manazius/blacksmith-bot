@@ -1,0 +1,12 @@
+{
+u"pattern_command": {
+u"syntax": u'''pattern [add/del] [jid/nick] [pattern] [kick/ban/visitor/member]''',
+
+u"cmd": u'''pattern''',
+
+u"examples": [u'''pattern add jid *@jabber.ru/QIP kick — бот кикнет любого пользователя с сервера jabber.ru и с ресурсом QIP''', u'''pattern add nick window* ban — бот забанит любого, чей ник начинается на window'''],
+
+u"desc": u'''Пользовательские регулярки. Также известны как символы-джокеры.
+Используются в боте для автомодерации.'''
+}
+}

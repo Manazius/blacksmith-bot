@@ -1,0 +1,41 @@
+{
+u"handler_rss_channels": {
+u"syntax": u'''канал [+/-] [name] [url]''',
+
+u"cmd": u'''канал''',
+
+u"examples": [u'''канал + slashdot http://www.slashdot.org/slashdot.rdf''', u'''канал - slashdot'''],
+
+u"desc": u'''Добавляет/Удаляет RSS канал.'''
+},
+
+u"handler_rss_control": {
+u"syntax": u'''трансляция [старт/start/стоп/stop]''',
+
+u"cmd": u'''трансляция''',
+
+u"examples": [u'''трансляция'''],
+
+u"desc": u'''Начать/закончить трансляцию.'''
+},
+
+u"handler_rss_subscribe": {
+u"syntax": u'''подписка [+/-] [name]''',
+
+u"cmd": u'''подписка''',
+
+u"examples": [u'''подписка + slashdot''', u'''подписка - slashdot'''],
+
+u"desc": u'''Добавляет/Удаляет подписку.'''
+},
+
+u"handler_rss_info": {
+u"syntax": u'''каналы [name]''',
+
+u"cmd": u'''каналы''',
+
+u"examples": [u'''каналы slashdot''', u'''каналы'''],
+
+u"desc": u'''Даёт инфу о канале или список каналов.'''
+}
+}
