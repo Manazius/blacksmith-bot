@@ -15,6 +15,7 @@
 #  See license.txt for more details.
 #  © WitcherGeralt, based on Talisman by Als (Neutron by Gh0st)
 #  The new bot life © simpleApps 2011 — 2013.
+#  Some modifications made in 2023. Long live XMPP!
 
 ## Imports.
 from traceback import format_exc, print_exc
@@ -28,7 +29,7 @@ if core:
 	if root:
 		os.chdir(root)
 
-sys.path.insert(0, "library.zip")
+sys.path.insert(0, "library")
 
 from enconf import *
 import xmpp, macros
