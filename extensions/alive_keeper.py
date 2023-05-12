@@ -2,92 +2,101 @@
 # /* coding: utf-8 */
 # Code © WitcherGeralt, 2012.
 # Originally coded for BlackSmith mark.2
-
-
-get_disp = lambda disp: "%s@%s" % (disp._owner.User, disp._owner.Server) if isinstance(disp, (xmpp.Client, xmpp.dispatcher.Dispatcher)) else disp
+# Rewritten in 2023
 
 ALIVE_KEEPER = {}
+GLOBAL_KEEPALIVE_TIMEOUT = 60
+CHAT_KEEPALIVE_TIMEOUT = 60
+CLIENT_TYPES = (xmpp.Client, xmpp.dispatcher.Dispatcher)
 
-def alive_keeper():
 
-		def alive_keeper_answer(disp, stanza):
+class alive_keeper(object):
+
+	def __init__(self):
+		self.global_keeper_cnt = 0
+		self.looping = True
+
+	get_disp = lambda self, jClient: "%s@%s" % (jClient._owner.User, jClient._owner.Server)\
+		if isinstance(jClient, CLIENT_TYPES) else jClient
+
+	def start_all(self):
+		composeThr(self.alive_keeper, "alive-keeper").start()
+		composeThr(self.alive_keeper_chat, "alive-keeper-groupchat").start()
+
+	def alive_keeper(self):
+
+		self.global_keeper_cnt = 0
+
+		def alive_keeper_answer(jClient, stanza):
 			if stanza:
-				jClient.aKeeper = 0
+				self.global_keeper_cnt = 0
 
-		disp = jClient
-		disp_str = get_disp(disp)
-		while True:
-			time.sleep(5)
-			thrIds = [x.name for x in threading.enumerate()]
-			if not hasattr(disp, "aKeeper"):
-				disp.aKeeper = 0
+		while self.looping:
+			time.sleep(GLOBAL_KEEPALIVE_TIMEOUT)
+			thr_ids = [x.name for x in threading.enumerate()]
 
-			if disp.aKeeper > 2:
-				disp.aKeeper = 0
-				thrName = "alive-keeper"
-				if thrName in thrIds:
+			if self.global_keeper_cnt > 2:
+				self.global_keeper_cnt = 0
+				thread_name = "alive-keeper"
+				if thread_name in thr_ids:
 					for thr in threading.enumerate():
-						if thrName == thr.name:
+						if thread_name == thr.name:
 							thr.kill()
 				try:
-					composeThr(Connect, thrName, ()).start()
+					self.looping = False
+					Exit("Looks like we're disconnected", 0, 5)
 				except Exception:
-					lytic_crashlog(alive_keeper)
+					lytic_crashlog(self.alive_keeper)
 
 			else:
-				disp.aKeeper += 1
+				self.global_keeper_cnt += 1
 				INFO["outiq"] += 1
-				iq = xmpp.Iq("get", to="%s/%s" % (disp_str, RESOURCE))
+				jid = xmpp.JID(node=USERNAME, domain=SERVER, resource=RESOURCE)
+				iq = xmpp.Iq("get", to=str(jid))
 				iq.addChild("ping", namespace=xmpp.NS_PING)
 				iq.setID("Bs-i%d" % INFO["outiq"])
 				jClient.SendAndCallForResponse(iq, alive_keeper_answer)
 
 
+	def alive_keeper_chat(self):
 
-def conf_alive_keeper():
+		def chat_alive_keeper_answer(jClient, stanza, chat):
+			if GROUPCHATS.has_key(chat) and ALIVE_KEEPER.has_key(chat):
+				if xmpp.isErrorNode(stanza):
+					if stanza.getErrorCode() == "405":
+						ALIVE_KEEPER[chat] = 0
+				else:
+					ALIVE_KEEPER[chat] = 0
 
-	def conf_alive_keeper_answer(disp, stanza, conf):
-		if GROUPCHATS.has_key(conf) and ALIVE_KEEPER.has_key(conf):
-			if xmpp.isErrorNode(stanza):
-				if "405" == stanza.getErrorCode():
-					ALIVE_KEEPER[conf] = 0
-			else:
-				ALIVE_KEEPER[conf] = 0
+		while self.looping:
+			time.sleep(CHAT_KEEPALIVE_TIMEOUT)
+			thr_ids = [thr.name for thr in threading.enumerate()]
+			for chat in GROUPCHATS.keys():
 
-	while True:
-		time.sleep(360)
-		thrIds = [x.name for x in threading.enumerate()]
-		for conf in GROUPCHATS.keys():
+				if chat not in ALIVE_KEEPER:
+					ALIVE_KEEPER[chat] = 0
 
-			if conf not in ALIVE_KEEPER:
-				ALIVE_KEEPER[conf] = 0
+				if ALIVE_KEEPER[chat] > 2:
+					ALIVE_KEEPER[chat] = 0
+					timer_name = "ejoinTimer-%s" % chat
+					if timer_name not in thr_ids:
+						try:
+							composeTimer(180, error_join_timer, timer_name, (chat,)).start()
+						except Exception:
+							lytic_crashlog(chat_alive_keeper)
 
-			if ALIVE_KEEPER[conf] > 2:
-				ALIVE_KEEPER[conf] = 0
-				TimerName = "ejoinTimer-%s" % conf
-				if TimerName not in thrIds:
-					try:
-						composeTimer(180, error_join_timer, TimerName, (conf,)).start()
-					except Exception:
-						lytic_crashlog(conf_alive_keeper)
-
-			else:
-				ALIVE_KEEPER[conf] += 1
-				INFO["outiq"] += 1
-				iq = xmpp.Iq("get", to = "%s/%s" % (conf, handler_botnick(conf)))
-				iq.addChild("ping", namespace = xmpp.NS_PING)
-				iq.setID("Bs-i%d" % INFO["outiq"])
-				jClient.SendAndCallForResponse(iq, conf_alive_keeper_answer, {"conf": conf})
+				else:
+					ALIVE_KEEPER[chat] += 1
+					INFO["outiq"] += 1
+					iq = xmpp.Iq("get", to="%s/%s" % (chat, handler_botnick(chat)))
+					iq.addChild("ping", namespace=xmpp.NS_PING)
+					iq.setID("Bs-i%d" % INFO["outiq"])
+					jClient.SendAndCallForResponse(iq, chat_alive_keeper_answer, {"chat": chat})
 
 
 def start_keepers():
-	Name1 = alive_keeper.__name__
-	Name2 = conf_alive_keeper.__name__
-	for thr in threading.enumerate():
-		if thr.name.startswith((Name1, Name2)):
-			thr.kill()
-	composeThr(alive_keeper, Name1).start()
-	composeThr(conf_alive_keeper, Name2).start()
+	keeper = alive_keeper()
+	keeper.start_all()
 
 
 handler_register("02si", start_keepers)
