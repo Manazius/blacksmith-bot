@@ -17,6 +17,7 @@
 #  The new bot life © simpleApps 2011 — 2013.
 #  Some modifications made in 2023. Long live XMPP!
 
+
 ## Imports.
 from traceback import format_exc, print_exc
 import gc, os, re, sys, time, random, threading
@@ -455,13 +456,18 @@ def handler_botnick(chat):
 		return BOT_NICKS[chat]
 	return DEFAULT_NICK
 
-def handler_jid(instance, Type = "jid"):
+def handler_jid(instance, type="jid"):
 	instance = unicode(instance)
-	List = instance.split('/', 1)
-	chat = List[0].lower()
-	if (len(List) == 2) and GROUPCHATS.has_key(chat):
-		if GROUPCHATS[chat].has_key(List[1]):
-			return GROUPCHATS[chat][List[1]][Type]
+	list = instance.split("/", 1)
+	if len(list) == 2:
+		chat, nick = list
+	else:
+		chat, nick = list[0], None
+	chat = chat.lower()
+	if chat in GROUPCHATS and nick in GROUPCHATS[chat]:
+		current = GROUPCHATS[chat][nick]
+		if isinstance(current, dict):
+			return current[type]
 	return chat
 
 def save_conflist(conf, nick = None, code = None):
@@ -905,16 +911,18 @@ def calc_acc(conf, jid, role):
 			change_local_access(conf, jid, access)
 
 def PRESENCE_PROCESSING(client, stanza):
-	fromjid = stanza.getFrom()
+	source = stanza.getFrom()
+	if not source:
+		raise xmpp.NodeProcessed()
 	INFO['prs'] += 1
-	conf = fromjid.getStripped().lower()
-	if not has_access(fromjid, -5, conf):
+	conf = source.getStripped().lower()
+	if not has_access(source, -5, conf):
 		raise xmpp.NodeProcessed()
 	Ptype = stanza.getType()
 	if Ptype == 'subscribe':
 		roster_subscribe(conf)
 	if GROUPCHATS.has_key(conf):
-		nick = fromjid.getResource()
+		nick = source.getResource()
 		if Ptype == 'unavailable':
 			reason = stanza.getReason() or stanza.getStatus()
 			if GROUPCHATS[conf].has_key(nick) and GROUPCHATS[conf][nick]['ishere']:
@@ -928,8 +936,8 @@ def PRESENCE_PROCESSING(client, stanza):
 			elif scode == '303':
 				full_jid = stanza.getJid()
 				if not full_jid:
-					full_jid = unicode(fromjid)
-					jid = unicode(fromjid)
+					full_jid = unicode(source)
+					jid = unicode(source)
 				else:
 					full_jid = unicode(full_jid)
 					jid = full_jid.split('/')[0].lower()
@@ -952,11 +960,11 @@ def PRESENCE_PROCESSING(client, stanza):
 				status_code_change(('idle', 'joined', "caps"), conf, nick) #0
 		elif Ptype in ('available', None):
 			full_jid = stanza.getJid()
-			if not full_jid:
+			if not full_jid and nick:
 				if MSERVE:
 					if conf not in UNAVAILABLE:
 						UNAVAILABLE.append(conf)
-					jid = full_jid = unicode(fromjid)
+					jid = full_jid = unicode(source)
 				else:
 					if conf not in UNAVAILABLE:
 						UNAVAILABLE.append(conf)
@@ -1076,7 +1084,7 @@ def starting_actions():
 	load_plugins()
 
 def Connect():
-	globals()['jClient'] = globals()['JCON'] = xmpp.Client(HOST, PORT, debug=[])
+	globals()['jClient'] = globals()['JCON'] = xmpp.Client(HOST, PORT, [])
 	Print('\n\nConnecting...', color4)
 	if SECURE:
 		CONNECT = jClient.connect((SERVER, PORT), None, None, False)
