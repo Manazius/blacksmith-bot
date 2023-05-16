@@ -139,8 +139,8 @@ def handler_order_join(conf, nick, afl, role, status, text):
 					visitor(conf, nick, u'%s: право голоса снято за предыдущие нарушения' % handler_botnick(conf))
 			if ORDER[conf]['kicks']['cond'] == 1:
 				kcnt = ORDER[conf]['kicks']['cnt']
-				if ORDER_STATS[conf][jid]['kicks'] > kcnt:
-					outcast(conf, nick, u'%s: слишком много киков' % handler_botnick(conf))
+				if ORDER_STATS[conf][jid]['kicks'] >= kcnt:
+					outcast(conf, jid, u'%s: слишком много киков' % handler_botnick(conf))
 					return
 			if ORDER[conf]['fly']['cond'] == 1:
 				lastprs = ORDER_STATS[conf][jid]['prstime']['fly']
