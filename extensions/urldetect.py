@@ -68,7 +68,7 @@ def urlParser(body, TitleMSG = u"%s", callType = "auto"):
 					data = opener.read()
 					data = zlib.decompress(data, 16 + zlib.MAX_WBITS)
 				else:
-					data = opener.read(7000)
+					data = opener.read()
 				Type, Charset = contentTypeParser(opener, data)
 				title = getTagData("title", data)
 				title = title.decode(Charset)
